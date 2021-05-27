@@ -20,7 +20,6 @@ function factorial(n) {
     }
     return result;
   }
-
 }
 
 >>>>>>> 9e4d356e790b6ac55abe5f67f465c2ad02154b1c
