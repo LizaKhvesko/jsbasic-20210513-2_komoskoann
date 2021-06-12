@@ -1,4 +1,4 @@
-fdescribe('5-module-3-task', () => {
+describe('5-module-3-task', () => {
   let carouselWrapper;
   let carouselInner;
   let carouselArrowRight;
