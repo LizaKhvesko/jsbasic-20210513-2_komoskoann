@@ -1,7 +1,7 @@
 import slides from './slides.js';
 import Carousel from './index.js';
 
-fdescribe('6-module-3-task', () => {
+describe('6-module-3-task', () => {
   let sut;
 
   let carouselInner;

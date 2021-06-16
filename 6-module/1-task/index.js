@@ -13,7 +13,9 @@
  *
  */
 export default class UserTable {
+
   constructor(rows) {
+<<<<<<< HEAD
     this.elem = document.createElement('div');
     this.elem.classList.add('table');
     this.render(rows);
@@ -29,6 +31,24 @@ render(rows) {
   this.elem.innerHTML = `
   <table>
     <thead>
+=======
+    this.elem = document.createElement('table');
+    this.render(rows);
+    this.remove(this.elem);
+  }
+
+  render(rows) {
+    const list = rows.map(value => `
+      <tr><td>${value.name}</td>
+      <td>${value.age}</td>
+      <td>${value.salary}</td>
+      <td>${value.city}</td>
+      <td><button>X</button></td></tr>
+    `).join('');
+
+    this.elem.innerHTML = `
+      <thead>
+>>>>>>> cfc8ccb5eb39db80017d9fe2ffb5eb0bc7194e5b
         <tr>
             <th>Имя</th>
             <th>Возраст</th>
@@ -36,6 +56,7 @@ render(rows) {
             <th>Город</th>
             <th></th>
         </tr>
+<<<<<<< HEAD
     </thead>
     <tbody>
     <tr class = 'tr'>
@@ -69,6 +90,27 @@ render(rows) {
 </tbody>
 </table>
         `
+=======
+      </thead>  
+      <tbody>
+        ${list}
+      </tbody>
+    `;
+  }
+
+  remove(element) {
+    let trs = element.querySelectorAll('tr');
+    for(let tr of trs) {
+      let removeButton = tr.querySelector('button');
+      if (removeButton) {
+        removeButton.addEventListener('click', function() {
+          tr.remove();
+        });
+      }
+    }
+  }
+  
+>>>>>>> cfc8ccb5eb39db80017d9fe2ffb5eb0bc7194e5b
 }
 
 onclick(event) {
