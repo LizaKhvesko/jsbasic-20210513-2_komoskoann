@@ -18,7 +18,7 @@ export default class CartIcon {
       this.elem.innerHTML = `
         <div class="cart-icon__inner">
           <span class="cart-icon__count">${cart.getTotalCount()}</span>
-          <span class="cart-icon__price">€${cart.getTotalPrice().toFixed(2)}</span>
+          <span class="cart-icon__price">€${cart.getTotalPrice()}</span>
         </div>`;
 
       this.updatePosition();
@@ -39,33 +39,44 @@ export default class CartIcon {
   }
 
   updatePosition() {
-    let initialTopCoord = this.elem.getBoundingClientRect().top + window.pageYOffset;
 
-    if (this.elem.offsetWidth !== 0 && this.elem.offsetHeight !== 0) {
-    if (window.pageYOffset > initialTopCoord) {
-
+    if (!this.initialTopCoord) {
+    this.initialTopCoord = this.elem.getBoundingClientRect().top + window.pageYOffset;
+    }
+    
+    if (window.pageYOffset > this.initialTopCoord) {
       let leftIndent = Math.min(
         document.querySelector('.container').getBoundingClientRect().right + 20,
         document.documentElement.clientWidth - this.elem.offsetWidth - 10
-      ) + 'px'
+        ) + 'px';
 
       Object.assign(this.elem.style, {
-        position: 'fixed',
-        top: '50px',
-        zIndex: 1e3,
-        right: '10px',
-        left: leftIndent
+      position: 'fixed',
+      top: '50px',
+      zIndex: 1e3,
+      right: '10px',
+      left: leftIndent
       });
-    } 
-  }
-   if (window.pageYOffset == 0) {
+      
+    } else {
       Object.assign(this.elem.style, {
-        position: 'absolute',
+        position: '',
         top: '',
         left: '',
         zIndex: ''
-      }); 
-  }
+      });
+    }
 
-}
+    let isMobile = document.documentElement.clientWidth <= 767;
+    // Если условие выполняется, обнуляем стили к исходным
+    if (document.documentElement.clientWidth <= 767) {
+      Object.assign(this.elem.style, {
+        position: '',
+        top: '',
+        left: '',
+        zIndex: ''
+      });
+    }
+    
+  }
 }

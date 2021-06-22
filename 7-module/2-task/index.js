@@ -44,6 +44,7 @@ export default class Modal {
       let modalTitle = this.elem.querySelector('.modal__title');
       modalTitle.innerHTML = title;
     }
+<<<<<<< HEAD
   }
 
   setBody(text) {
@@ -61,6 +62,25 @@ export default class Modal {
     this.opened = false;
   }
 
+=======
+  }
+
+  setBody(text) {
+    this.body = text.outerHTML; 
+    if (this.opened) {
+      let modalBody = this.elem.querySelector('.modal__body');
+      modalBody.innerHTML = text.outerHTML;
+    }
+  }
+
+  close() {
+    let body = document.querySelector('body');
+    body.classList.remove('is-modal-open');
+    this.elem.remove();
+    this.opened = false;
+  }
+
+>>>>>>> 9e917926d24b114d2b44806487f7f828f90b5970
   onClick(event) {
     if (event.target.closest('.modal__close')) {
       this.close();
