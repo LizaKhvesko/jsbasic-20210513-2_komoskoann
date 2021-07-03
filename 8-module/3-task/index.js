@@ -3,6 +3,7 @@ export default class Cart {
 
   constructor(cartIcon) {
     this.cartIcon = cartIcon;
+  
   }
 
   addProduct(product) {
@@ -15,41 +16,36 @@ export default class Cart {
       this.cartItems.push(cartItem);
     }
 
-    this.onProductUpdate(cartItem);
-    //console.log(this.cartItems)
-  
+    this.onProductUpdate(this.cartItems);
   }
 
   updateProductCount(productId, amount) {
-      console.log(this.cartItems)
-      let cartItem = this.cartItems.find(item => (item.product.id === productId));
-    
-       cartItem.count += amount 
-   
-   
+    let cartItem = this.cartItems.find(item => (item.product.id === productId));
+    cartItem.count += amount;
+    if (cartItem.count === 0) {
+      this.cartItems.splice(this.cartItems.indexOf(cartItem), 1);
+    };
     this.onProductUpdate(cartItem);
-    console.log(cartItem)
   }
 
   isEmpty() {
-    console.log(this.getTotalCount() === 0)
-   
-    return this.getTotalCount() === 0;
-
+    if (this.cartItems.length === 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   getTotalCount() {
-    return this.cartItems.reduce((acc, cartItem) => {
-      acc += cartItem.count;
-      return acc;
-    }, 0);
+    let totalCount = this.cartItems.map(item => (item.count));
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    return totalCount.reduce(reducer);
   }
 
   getTotalPrice() {
-    return this.cartItems.reduce((acc, cartItem) => {
-      acc += cartItem.count * cartItem.product.price;
-      return acc;
-    }, 0);
+    let price = this.cartItems.map(item => (item.product.price));
+    let totalCount = this.cartItems.map(item => (item.count));
+    return price.reduce(function(r,a,i) {return r + a * totalCount[i]},0);
   }
 
   onProductUpdate(cartItem) {
@@ -58,7 +54,3 @@ export default class Cart {
     this.cartIcon.update(this);
   }
 }
- 
- 
- 
-

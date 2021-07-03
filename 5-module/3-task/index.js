@@ -1,23 +1,5 @@
 function initCarousel() {
-<<<<<<< HEAD
- let buttonLeft = document.querySelector('.carousel__arrow_left');
- let buttonRight = document.querySelector('.carousel__arrow_right');
- let slides = document.querySelector('.carousel__inner');
 
-
- buttonRight.onclick = function () {
-   while (slides.dataset.id !== 'chicken-springrolls') {
-   slides.style.transform = 'translateX(-500px)';
-   slides++
-   }
- }
-
- buttonLeft.onclick = function () {
-  slides.style.transform = 'translateX(500px)';
-  slides--
-}
-
-=======
   const numOfSlides = 4;
 
   let carouselInner = document.querySelector('.carousel__inner');
@@ -42,7 +24,7 @@ function initCarousel() {
 
   carouselArrowRight.addEventListener('click', function() {
     currentSlide++;
-   carouse lInner.style.transform = `translateX(-${widthOfSlide * currentSlide}px)`;
+   carouselInner.style.transform = `translateX(-${widthOfSlide * currentSlide}px)`;
     updateArrow();
   });
 
@@ -52,5 +34,4 @@ function initCarousel() {
     updateArrow();
   });
   
->>>>>>> beeb2a95d0b812ff3930af7789b4103634923630
 }

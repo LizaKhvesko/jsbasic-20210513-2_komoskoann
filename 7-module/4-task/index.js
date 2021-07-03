@@ -1,6 +1,6 @@
 export default class StepSlider {
   constructor({ steps, value = 0 }) {
-<<<<<<< HEAD
+
     this.elem = document.createElement('div');
     this.elem.classList.add('slider');
     let element = this.elem;
@@ -133,16 +133,6 @@ export default class StepSlider {
      ${spanStr}
     </div>
   `
-
-=======
-    this.value = value;
-    this.steps = steps;
-    this.elem = document.createElement('div');
-    this.elem.classList.add('slider');
-    this.render();
-    this.addEvent(this.elem);
-    this.dragNDrop(this.elem);
->>>>>>> 9e917926d24b114d2b44806487f7f828f90b5970
   }
 
   render() {

@@ -1,14 +1,13 @@
 function highlight(table) {
-<<<<<<< HEAD
+
   let tds = table.getElementsByTagName('td');
   let trs = table.getElementsByTagName('tr');
 
-=======
 
   let tds = table.getElementsByTagName('td');
   let trs = table.getElementsByTagName('tr');
     
->>>>>>> f6294b6535db9bd7edc2dd52759c7b5141ea17a3
+
   for (let i = 0; i < tds.length; i++) {
     let num = (tds.length / trs.length);
 
@@ -36,9 +35,7 @@ function highlight(table) {
     } 
 
   }
-<<<<<<< HEAD
 } 
 
-=======
-}
->>>>>>> f6294b6535db9bd7edc2dd52759c7b5141ea17a3
+
+
